@@ -1,5 +1,7 @@
 import { API_BASE_URL, API_KEY_STORAGE_KEY, TOKEN_STORAGE_KEY } from './constants';
 
+const apiKey = import.meta.env.VITE_API_KEY;
+
 type ApiOptions = {
   method?: string;
   body?: unknown;
@@ -11,7 +13,7 @@ export async function apiClient<T>(
   options: ApiOptions = {},
 ): Promise<T> {
   const token = localStorage.getItem(TOKEN_STORAGE_KEY);
-  const apiKey = localStorage.getItem(API_KEY_STORAGE_KEY);
+  const storedApiKey = localStorage.getItem(API_KEY_STORAGE_KEY);
 
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
@@ -24,7 +26,7 @@ export async function apiClient<T>(
     }
 
     if (apiKey) {
-      headers['X-Noroff-API-Key'] = apiKey;
+      headers['X-Noroff-API-Key'] = storedApiKey || apiKey;
     }
   }
 

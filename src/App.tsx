@@ -9,7 +9,7 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import CreateVenuePage from './pages/CreateVenuePage';
 import EditVenuePage from './pages/EditVenuePage';
-import MyBookingsPage from './pages/MybookingsPage';
+import MyBookingsPage from './pages/MyBookingsPage';
 import ManagerBookingsPage from './pages/ManagerBookingsPage';
 import NotFoundPage from './pages/NotFoundPage';
 

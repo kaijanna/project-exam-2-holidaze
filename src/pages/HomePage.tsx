@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { getVenues } from '../api/venueApi';
-import type { Venue } from '../types/venue';
+import { useEffect, useState } from "react";
+import { getVenues } from "../api/venueApi";
+import type { Venue } from "../types/venue";
+import VenueCard from "../components/venues/VenueCard";
 
 function HomePage() {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     async function loadVenues() {
@@ -13,7 +14,7 @@ function HomePage() {
         const response = await getVenues();
         setVenues(response.data);
       } catch (error) {
-        setErrorMessage('Could not load venues.');
+        setErrorMessage("Could not load venues.");
       } finally {
         setIsLoading(false);
       }
@@ -31,16 +32,19 @@ function HomePage() {
   }
 
   return (
-    <section>
-      <h1>Holidaze venues</h1>
+    <section className="venues-section">
+      <div className="venues-header">
+        <h1>VENUES</h1>
+        <button className="filter-button" type="button">
+          FILTER
+        </button>
+      </div>
 
-      {venues.map((venue) => (
-        <article key={venue.id}>
-          <h2>{venue.name}</h2>
-          <p>{venue.location.city || 'Unknown city'}</p>
-          <p>{venue.price} NOK per night</p>
-        </article>
-      ))}
+      <div className="venue-grid">
+        {venues.map((venue) => (
+          <VenueCard key={venue.id} venue={venue} />
+        ))}
+      </div>
     </section>
   );
 }

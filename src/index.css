@@ -1,0 +1,130 @@
+:root {
+  font-family: 'Noto Sans', Arial, sans-serif;
+
+  --color-bg: #eadfd5;
+  --color-surface: #f3f0eb;
+  --color-text: #444444;
+  --color-primary: #de743b;
+  --color-primary-dark: #c85f29;
+  --color-border: #d8c8b9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-primary-dark);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.venue-card {
+  background: #f3f0eb;
+  border: 1px solid #d8c8b9;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-place {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.75rem;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.venue-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.heart-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: none;
+  border-radius: 50%;
+
+  width: 34px;
+  height: 34px;
+
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.venue-card__content {
+  padding-top: 1rem;
+}
+
+.venue-card__content h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.card-price {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .venue-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .venue-grid {
+    grid-template-columns: 1fr;
+  }
+}
