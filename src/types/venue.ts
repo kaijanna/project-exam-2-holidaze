@@ -34,3 +34,8 @@ export type VenueResponse = {
     totalCount: number;
   };
 };
+
+export type SingleVenueResponse = {
+  data: Venue;
+  meta: object;
+};

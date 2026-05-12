@@ -2,11 +2,23 @@ import { useEffect, useState } from "react";
 import { getVenues } from "../api/venueApi";
 import type { Venue } from "../types/venue";
 import VenueCard from "../components/venues/VenueCard";
+import Hero from '../components/home/Hero';
+import SearchBar from '../components/home/SearchBar';
 
 function HomePage() {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [searchValue, setSearchValue] = useState('');
+
+  const filteredVenues = venues.filter((venue) => {
+  const searchText = searchValue.toLowerCase();
+
+  return (
+    venue.name.toLowerCase().includes(searchText) ||
+    venue.description.toLowerCase().includes(searchText)
+  );
+});
 
   useEffect(() => {
     async function loadVenues() {
@@ -32,6 +44,12 @@ function HomePage() {
   }
 
   return (
+    <>
+    <Hero />
+    <SearchBar
+    searchValue={searchValue}
+    onSearchChange={setSearchValue}
+  />
     <section className="venues-section">
       <div className="venues-header">
         <h1>VENUES</h1>
@@ -41,11 +59,12 @@ function HomePage() {
       </div>
 
       <div className="venue-grid">
-        {venues.map((venue) => (
+        {filteredVenues.map((venue) => (
           <VenueCard key={venue.id} venue={venue} />
         ))}
       </div>
     </section>
+    </>
   );
 }
 
