@@ -2,23 +2,30 @@ import { useEffect, useState } from "react";
 import { getVenues } from "../api/venueApi";
 import type { Venue } from "../types/venue";
 import VenueCard from "../components/venues/VenueCard";
-import Hero from '../components/home/Hero';
-import SearchBar from '../components/home/SearchBar';
+import Hero from "../components/home/Hero";
+import SearchBar from "../components/home/SearchBar";
 
 function HomePage() {
   const [venues, setVenues] = useState<Venue[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const filteredVenues = venues.filter((venue) => {
-  const searchText = searchValue.toLowerCase();
+    const searchText = searchValue.toLowerCase();
 
-  return (
-    venue.name.toLowerCase().includes(searchText) ||
-    venue.description.toLowerCase().includes(searchText)
-  );
-});
+    const venueName = venue.name?.toLowerCase() || "";
+    const venueDescription = venue.description?.toLowerCase() || "";
+    const venueCity = venue.location?.city?.toLowerCase() || "";
+    const venueCountry = venue.location?.country?.toLowerCase() || "";
+
+    return (
+      venueName.includes(searchText) ||
+      venueDescription.includes(searchText) ||
+      venueCity.includes(searchText) ||
+      venueCountry.includes(searchText)
+    );
+  });
 
   useEffect(() => {
     async function loadVenues() {
@@ -45,25 +52,22 @@ function HomePage() {
 
   return (
     <>
-    <Hero />
-    <SearchBar
-    searchValue={searchValue}
-    onSearchChange={setSearchValue}
-  />
-    <section className="venues-section">
-      <div className="venues-header">
-        <h1>VENUES</h1>
-        <button className="filter-button" type="button">
-          FILTER
-        </button>
-      </div>
+      <Hero />
+      <SearchBar searchValue={searchValue} onSearchChange={setSearchValue} />
+      <section className="venues-section">
+        <div className="venues-header">
+          <h1>VENUES</h1>
+          <button className="filter-button" type="button">
+            FILTER
+          </button>
+        </div>
 
-      <div className="venue-grid">
-        {filteredVenues.map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
-        ))}
-      </div>
-    </section>
+        <div className="venue-grid">
+          {filteredVenues.map((venue) => (
+            <VenueCard key={venue.id} venue={venue} />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

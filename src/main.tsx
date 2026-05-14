@@ -1,13 +1,24 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; 
-import './index.css';
-import App from './App.tsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-createRoot(document.getElementById('root')!).render(
+import App from "./App.tsx";
+import { AuthProvider } from "./context/AuthContext";
+
+import './styles/base.css';
+import './styles/layout.css';
+import './styles/navbar.css';
+import './styles/auth.css';
+import './styles/venues.css';
+import './styles/bookingcard.css';
+import './styles/profile.css';
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>,
 );

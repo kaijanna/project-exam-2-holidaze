@@ -1,0 +1,81 @@
+.profile-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #d8c7b8;
+}
+
+.profile-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fffaf5;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.profile-user-info h1 {
+  margin-bottom: 0.4rem;
+}
+
+.profile-user-info p {
+  margin-bottom: 0.7rem;
+  color: #666;
+}
+
+.profile-role {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background-color: #fffaf5;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.edit-profile-button {
+  padding: 0.8rem 1.4rem;
+  border: 1px solid #e86f35;
+  border-radius: 0.5rem;
+  background: none;
+  color: #e86f35;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-content {
+  padding-top: 2rem;
+}
+
+.profile-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.profile-empty-state {
+  padding: 3rem;
+  border-radius: 1rem;
+  background-color: #fffaf5;
+  text-align: center;
+}
+
+.profile-venues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}

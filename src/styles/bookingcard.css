@@ -1,0 +1,44 @@
+.booking-card {
+  background: #f9f4f4;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.booking-card__price {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.booking-card__price strong {
+  font-size: 1.6rem;
+}
+
+.booking-card label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.booking-card input,
+.booking-card select {
+  width: 100%;
+  margin-top: 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: white;
+}
+
+.booking-card .button {
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.booking-card__note {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+}
